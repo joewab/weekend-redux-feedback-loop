@@ -8,6 +8,7 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import Done from '../Done/Done';
+import { Typography } from '@mui/material';
 
 
 function App() {
@@ -16,12 +17,12 @@ function App() {
     <Router>
       <div className='App'>
         <header className='App-header'>
-          <h1 className='App-title'>Feedback!</h1>
-          <h4>Don't forget it!</h4>
-          <nav>
+        <Typography variant="h2" gutterBottom>Feedback!</Typography>
+        <Typography variant="h4" gutterBottom>Don't forget it!</Typography>
+          {/* <nav>
           <Link to="/">Home</Link>
           <Link to="/review">Review</Link>
-          </nav>
+          </nav> */}
         </header>
         <main>
           <Route exact path="/">

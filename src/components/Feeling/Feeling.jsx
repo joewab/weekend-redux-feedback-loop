@@ -2,6 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
+import Input from '@mui/material/Input';
 
 
 function Feeling() {
@@ -22,17 +25,20 @@ function Feeling() {
     }
 
     return (
-        <div id="Feeling">
-            <h1>How are you Feeling today?</h1>
-             <input
+        <>
+            <Typography variant="h4" gutterBottom>How are you Feeling today?</Typography>
+            <div id="feeling">
+             <Input
                     required
                     type='number'
                     placeholder="Feeling"
                     value={feelingRating}
                     onChange={(event) => setFeelingRating(event.target.value)}
                 />
-            <button onClick={handleClick}>NEXT</button>
-        </div>
+            </div>
+            <Button onClick={handleClick}>NEXT</Button>
+            
+        </>
     );
 }
 

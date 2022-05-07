@@ -18,6 +18,8 @@
   font-size: large;
 }
 
-h4 {
-  font-style: italic;
+#feeling, #understanding, #support, #comments, #review{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

@@ -3,6 +3,10 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+import { Typography } from '@mui/material';
+import Input from '@mui/material/Input';
+
 
 
 function Review() {
@@ -17,6 +21,11 @@ function Review() {
 
   function handleSubmit() {
     console.log( feeling, understanding, support, comments );
+    if (feeling==='' || understanding==='' || support==='' || comments===''){
+      alert('Please complete the form!')
+      return false
+    }
+
     axios({
       method: 'POST',
       url: '/formSubmission',
@@ -31,15 +40,22 @@ function Review() {
 
   }
 
+  function handleGoBack(){
+    history.push('/comments')
+  }
+
   return (
+    <>
+      <Typography variant="h4" gutterBottom>Review Your Feedback</Typography>
+      <Typography variant="h6" gutterBottom>Feelings: {feeling}</Typography>
+      <Typography variant="h6" gutterBottom>Understanding: {understanding}</Typography>
+      <Typography variant="h6" gutterBottom>Support: {support}</Typography>
+      <Typography variant="h6" gutterBottom>Comments: {comments}</Typography>
     <div id="review">
-      <h1>Review Your Feedback</h1>
-      <h3>Feelings: {feeling}</h3>
-      <h3>Understanding: {understanding}</h3>
-      <h3>Support: {support}</h3>
-      <h3>Comments: {comments}</h3>
-      <button onClick={handleSubmit}>SUBMIT</button>
+      <Button onClick={handleGoBack}>Go Back</Button>
+      <Button onClick={handleSubmit}>SUBMIT</Button>
     </div>
+    </>
   )
 
 }
