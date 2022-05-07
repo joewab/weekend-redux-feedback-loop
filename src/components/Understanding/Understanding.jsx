@@ -26,6 +26,7 @@ function Understanding() {
             <h1>How well are you understanding the content?</h1>
              <input
                     required
+                    type='number'
                     placeholder="Understanding"
                     value={understandingRating}
                     onChange={(event) => setUnderstandingRating(event.target.value)}

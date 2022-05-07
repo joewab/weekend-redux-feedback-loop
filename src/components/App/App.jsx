@@ -4,7 +4,11 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
+import Support from '../Support/Support';
+import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
+import Done from '../Done/Done';
+
 
 function App() {
 
@@ -24,34 +28,19 @@ function App() {
             <Feeling/>
           </Route>
           <Route exact path="/understanding">
-            <div id="understanding">
-              <h1>How well are you understanding the content?</h1>
-              <input type="number" placeholder='Understanding?' />
-              <button>NEXT</button>
-            </div>
+            <Understanding/>
           </Route>
           <Route exact path="/support">
-            <div id="support">
-              <h1>How well are you being supported?</h1>
-              <input type="number" placeholder='Support?' />
-              <button>NEXT</button>
-            </div>
+           <Support/>
           </Route>
           <Route exact path="/comments">
-            <div id="comments">
-              <h1>Any comments you want to leave?</h1>
-              <input type="text" placeholder='Comments' />
-              <button>NEXT</button>
-            </div>
+           <Comments/>
           </Route>
           <Route exact path="/review">
             <Review/>
           </Route>
           <Route exact path="/done">
-            <div id="done">
-              <h1>Thanks for your feedback!</h1>
-              <button>Leave</button>
-            </div>
+            <Done/>
           </Route>
         </main>
       </div>
