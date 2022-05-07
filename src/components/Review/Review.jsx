@@ -9,7 +9,7 @@ import Input from '@mui/material/Input';
 
 
 
-function Review() {
+function Review({getReviews}) {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -32,6 +32,7 @@ function Review() {
       data: { feeling, understanding, support, comments }
     }).then((response) => {
       console.log('response from review submit button:', response);
+      getReviews();
       history.push('/done');
     }).catch((error) => {
       console.log('POST /formSubmission broke:', error);

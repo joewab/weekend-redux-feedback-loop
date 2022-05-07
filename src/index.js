@@ -60,6 +60,14 @@ const understandingReducer = (state = '', action) => {
     return state;
   };
 
+  const reviewReducer = (state = [], action) => {
+    if(action.type==='GET_REVIEWS'){
+      console.log('reviews gotten:', action.payload);
+      return action.payload;
+    }
+    return state;
+  }
+
 
 const storeInstance = createStore(
     combineReducers({
@@ -67,7 +75,7 @@ const storeInstance = createStore(
       understandingReducer,
       supportReducer,
       commentsReducer,
-    //   reviewReducer,
+      reviewReducer,
     //   doneReducer,
     }),
     applyMiddleware(logger),
