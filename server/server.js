@@ -55,7 +55,7 @@ app.post('/formSubmission', (req, res) => {
 app.get('/formsubmission', (req, res) => {
   console.log('in GET /formsubmission');
   let sqlQuery = `
-      SELECT * FROM "feedback";
+      SELECT * FROM "feedback" ORDER BY "id" DESC;
     `;
     pool.query(sqlQuery)
     .then((dbResult) => {
@@ -64,6 +64,25 @@ app.get('/formsubmission', (req, res) => {
     })
     .catch((dbError) => {
       console.log('error in GET /formsubmission db request:', dbError);
+      res.sendStatus(500);
+    })
+})
+
+app.delete('/formsubmission/:feedbackId', (req, res) => {
+  // We can access the value that was supplied
+  // to this route parameter by:
+  let feedbackToDelete = req.params.feedbackId;
+  let sqlQuery = `
+    DELETE FROM "feedback"
+      WHERE "id"=$1;
+  `
+  let sqlValues = [feedbackToDelete];
+  pool.query(sqlQuery, sqlValues)
+    .then((dbResult) => {
+      res.sendStatus(200);
+    })
+    .catch((dbError) => {
+      console.log('error in DELETE /feedback db request:');
       res.sendStatus(500);
     })
 })
