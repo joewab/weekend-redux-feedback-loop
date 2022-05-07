@@ -2,16 +2,44 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import  { useState, useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import Done from '../Done/Done';
+import Admin from '../Admin/Admin';
 import { Typography } from '@mui/material';
 
 
+
 function App() {
+
+  useEffect(() => {
+    console.log('in useEffect');
+    getReviews();
+  }, []);
+
+  const dispatch = useDispatch();
+
+  const getReviews = () => {
+    axios({
+      method: 'GET',
+      url: '/formSubmission'
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch({
+          type: 'GET_REVIEWS',
+          payload: response.data
+        })
+      })
+      .catch((error) => {
+        console.log('error on GET', error);
+      });
+  };
 
   return (
     <Router>
@@ -22,6 +50,7 @@ function App() {
           {/* <nav>
           <Link to="/">Home</Link>
           <Link to="/review">Review</Link>
+          <Link to="/admin">Admin</Link>
           </nav> */}
         </header>
         <main>
@@ -38,10 +67,13 @@ function App() {
            <Comments/>
           </Route>
           <Route exact path="/review">
-            <Review/>
+            <Review getReviews={getReviews}/>
           </Route>
           <Route exact path="/done">
             <Done/>
+          </Route>
+          <Route exact path="/admin">
+            <Admin getReviews={getReviews}/>
           </Route>
         </main>
       </div>

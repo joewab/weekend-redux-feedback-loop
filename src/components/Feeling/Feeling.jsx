@@ -16,6 +16,10 @@ function Feeling() {
 
     function handleClick(){
         console.log('Feeling rating is:', feelingRating)
+        if(feelingRating===''){
+            alert('please enter a number!')
+            return false
+        }
         dispatch({
             type:'RATE_FEELING',
             payload: feelingRating
