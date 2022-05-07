@@ -47,11 +47,11 @@ function App() {
         <header className='App-header'>
         <Typography variant="h2" gutterBottom>Feedback!</Typography>
         <Typography variant="h4" gutterBottom>Don't forget it!</Typography>
-          <nav>
+          {/* <nav>
           <Link to="/">Home</Link>
           <Link to="/review">Review</Link>
           <Link to="/admin">Admin</Link>
-          </nav>
+          </nav> */}
         </header>
         <main>
           <Route exact path="/">
@@ -67,13 +67,13 @@ function App() {
            <Comments/>
           </Route>
           <Route exact path="/review">
-            <Review/>
+            <Review getReviews={getReviews}/>
           </Route>
           <Route exact path="/done">
             <Done/>
           </Route>
           <Route exact path="/admin">
-            <Admin/>
+            <Admin getReviews={getReviews}/>
           </Route>
         </main>
       </div>

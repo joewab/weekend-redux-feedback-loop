@@ -7,8 +7,9 @@ import { Typography } from '@mui/material';
 import Input from '@mui/material/Input';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import FeedbackItem from '../FeedbackItem/FeedbackItem';
 
-function Admin(){
+function Admin({getReviews}){
 
 const reviews = useSelector(store => store.reviewReducer);
 const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const history = useHistory();
 
 return(
 <>
-<table>
+<table className="table">
     <thead>
         <tr>
             <th>Feeling</th>
@@ -33,13 +34,7 @@ return(
     <tbody>
         {reviews.map((review) => {
             return(
-                <tr>
-                    <td>{review.feeling}</td>
-                    <td>{review.understanding}</td>
-                    <td>{review.support}</td>
-                    <td>{review.comments}</td>
-                    <td><button>Delete</button></td>
-                </tr>
+                <FeedbackItem key={review.id} getReviews={getReviews} review={review}/>
             )
         })}
     </tbody>
