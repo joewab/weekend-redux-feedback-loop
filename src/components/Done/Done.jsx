@@ -19,7 +19,7 @@ function Done() {
     return (
         <div id="done">
             <h1>Thanks for your feedback!</h1>
-            <button onClick={handleClick}>Leave</button>
+            <button onClick={handleClick}>Back to Beginning</button>
         </div>
     )
 };
