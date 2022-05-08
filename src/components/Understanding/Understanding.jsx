@@ -17,6 +17,10 @@ function Understanding() {
 
     function handleNext(){
         console.log('Understanding rating is:', understandingRating)
+        if(understandingRating===''){
+            alert('please enter a number!')
+            return false
+        }
         dispatch({
             type:'RATE_UNDERSTANDING',
             payload: understandingRating

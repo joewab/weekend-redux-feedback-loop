@@ -21,7 +21,7 @@ function Review({getReviews}) {
 
   function handleSubmit() {
     console.log( feeling, understanding, support, comments );
-    if (feeling==='' || understanding==='' || support==='' || comments===''){
+    if (feeling==='' || understanding==='' || support===''){
       alert('Please complete the form!')
       return false
     }

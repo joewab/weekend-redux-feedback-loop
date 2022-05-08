@@ -16,6 +16,10 @@ function Support() {
 
     function handleNext() {
         console.log('Support rating is:', supportRating)
+        if(supportRating===''){
+            alert('please enter a number!')
+            return false
+        }
         dispatch({
             type: 'RATE_SUPPORT',
             payload: supportRating
